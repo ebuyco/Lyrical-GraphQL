@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const graphql = require('graphql');
 
-
+/*eslint-disable*/
 const {
   GraphQLObjectType,
-  //   GraphQLList,
+  GraphQLList,
   GraphQLID,
   GraphQLInt,
   GraphQLString
