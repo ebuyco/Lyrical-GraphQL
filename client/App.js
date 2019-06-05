@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 class App extends Component {
-    render(){
-        return(
-            <div>
+  render() {
+    return (
+      <div>
                 Lyrical
-            </div>
-        )
-    }
+      </div>
+    );
+  }
 }
 
 export default App;
