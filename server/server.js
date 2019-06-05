@@ -1,8 +1,15 @@
 const express = require('express');
-// const models = require('./models');
 const expressGraphQL = require('express-graphql');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+/*eslint-disable*/
+const models = require('./models');
+const schema = require('./schema/schema');
+/*eslint-disable*/
+
+const webpackMiddleware = require('webpack-dev-middleware');
+const webpack = require('webpack');
+const webpackConfig = require('../webpack.config.js');
 
 const app = express();
 
@@ -15,8 +22,8 @@ if (!MONGO_URI) {
 mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI, { useNewUrlParser: true });
 mongoose.connection
-  .once('open', () => console.log('Connected to MongoLab instance.'))
-  .on('error', error => console.log('Error connecting to MongoLab:', error));
+    .once('open', () => console.log('Connected to MongoLab instance.'))
+    .on('error', error => console.log('Error connecting to MongoLab:', error));
 
 app.use(bodyParser.json());
 app.use('/graphql', expressGraphQL({
@@ -24,10 +31,7 @@ app.use('/graphql', expressGraphQL({
   graphiql: true
 }));
 
-const webpackMiddleware = require('webpack-dev-middleware');
-const webpack = require('webpack');
-const schema = require('./schema/schema');
-const webpackConfig = require('../webpack.config.js');
+
 
 app.use(webpackMiddleware(webpack(webpackConfig)));
 

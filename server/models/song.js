@@ -16,13 +16,13 @@ const SongSchema = new Schema({
   }]
 });
 
-SongSchema.static.addLyric = function (id, content) {
+/*eslint-disable*/
+SongSchema.statics.addLyric = function (id, content) {
   const Lyric = mongoose.model('lyric');
 
-  return this.function(id)
-    .then((song) => {
-      /*eslint-disable*/
-      let lyric = new Lyric({
+  return this.findById(id)
+    .then(song => {
+     const lyric = new Lyric({
         content,
         song
       });
@@ -30,7 +30,7 @@ SongSchema.static.addLyric = function (id, content) {
       return Promise.all([
         lyric.save(), song.save()
       ])
-        .tehn(([lyric, song]) => song);
+        .then(([lyric, song]) => song);
     });
 };
 
