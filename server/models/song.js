@@ -17,7 +17,7 @@ const SongSchema = new Schema({
 });
 
 /*eslint-disable*/
-SongSchema.statics.addLyric = function (id, content) {
+SongSchema.statics.addLyric = function SongsSchema(id, content) {
   const Lyric = mongoose.model('lyric');
 
   return this.findById(id)
