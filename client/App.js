@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import SongList from './components/SongList';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-         Lyrical
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div>
+    <SongList />
+  </div>
+);
 
 export default App;
