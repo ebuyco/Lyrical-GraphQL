@@ -5,6 +5,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloLink } from 'apollo-link';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import fetch from 'node-fetch';
 import App from './App';
 
@@ -19,5 +20,14 @@ const client = new ApolloClient({
   link: ApolloLink.from([httpLink])
 });
 
-ReactDOM.render(<ApolloProvider client={client}><App /></ApolloProvider>,
-  document.getElementById('root'));
+ReactDOM.render(<ApolloProvider client={client}>
+  <BrowserRouter>
+    <Switch>
+      <Route path='/' exact component={App} />
+      <Redirect to='/' />
+
+    </Switch>
+  </BrowserRouter>
+
+</ApolloProvider>,
+document.getElementById('root'));
