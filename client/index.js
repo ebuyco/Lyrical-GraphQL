@@ -8,6 +8,8 @@ import { ApolloLink } from 'apollo-link';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import fetch from 'node-fetch';
 import App from './App';
+import './scss/index.scss';
+
 
 const cache = new InMemoryCache();
 const httpLink = new HttpLink({

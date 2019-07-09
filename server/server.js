@@ -9,7 +9,7 @@ const schema = require('./schema/schema');
 
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
-const webpackConfig = require('../webpack.config.js');
+const webpackConfig = require('../client/webpack/webpack.config');
 
 const app = express();
 
