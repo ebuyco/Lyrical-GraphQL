@@ -27,7 +27,6 @@ ReactDOM.render(<ApolloProvider client={client}>
     <Switch>
       <Route path='/' exact component={App} />
       <Redirect to='/' />
-
     </Switch>
   </BrowserRouter>
 
