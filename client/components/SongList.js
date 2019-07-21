@@ -23,9 +23,9 @@ class SongList extends Component {
         )
     }
     return (
-      <div>
+      <>
        {this.renderSongs()}
-      </div>
+      </>
     );
   }
 }
