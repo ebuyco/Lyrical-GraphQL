@@ -27,11 +27,24 @@ module.exports = {
   module: {
     rules: [
       {
-        use: { loader: 'babel-loader' },
+        enforce: 'pre',
         test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          emitWarning: true,
+          failOnError: false,
+          failOnWarning: false
+        }
+      },
+      {
+        use: { loader: 'babel-loader' },
+        test: /\.(js|jsx)$/,
+        // test: /\.js$/,
         exclude: /(node_modules|bower_components)/
         // query: { compact: false }
       },
+
       // SASS/SCSS
       {
         test: /\.scss$/,
@@ -52,6 +65,7 @@ module.exports = {
           }]
 
       },
+
       {
         use: ['style-loader', 'css-loader'],
         test: /\.css$/
@@ -123,7 +137,8 @@ module.exports = {
       excludeChunks: ['server']
     }),
     // can be deleted
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
   ],
   output: {
     path: path.join(process.cwd(), '/build'),

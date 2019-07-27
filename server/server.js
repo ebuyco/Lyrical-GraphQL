@@ -6,30 +6,30 @@ const bodyParser = require('body-parser');
 const models = require('./models');
 const schema = require('./schema/schema');
 /*eslint-disable*/
-const path = require('path');
+// const path = require('path');
 
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('../client/webpack/webpack.config');
 
-const app = express(),
-DIST_DIR = __dirname,
-            HTML_FILE = path.join(DIST_DIR, 'index.html'),
-            compiler = webpack(webpackConfig)
+const app = express()
+// ,DIST_DIR = __dirname,
+// HTML_FILE = path.join(DIST_DIR, 'index.html'),
+// compiler = webpack(webpackConfig)
 
-app.use(webpackMiddleware(compiler, {
-  publicPath: webpackConfig.output.publicPath
-}))
-app.get('*', (req, res, next) => {
-  compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
-  if (err) {
-    return next(err)
-  }
-  res.set('content-type', 'text/html')
-  res.send(result)
-  res.end()
-  })
-})
+// app.use(webpackMiddleware(compiler, {
+//   publicPath: webpackConfig.output.publicPath
+// }))
+// app.get('*', (req, res, next) => {
+//   compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
+//   if (err) {
+//     return next(err)
+//   }
+//   res.set('content-type', 'text/html')
+//   res.send(result)
+//   res.end()
+//   })
+// })
 
 // Replace with your mongoLab URI
 const MONGO_URI = 'mongodb://ebuyco:ebuyco2019@ds133137.mlab.com:33137/lyricaldb';

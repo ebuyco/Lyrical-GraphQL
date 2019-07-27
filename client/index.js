@@ -5,11 +5,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloLink } from 'apollo-link';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+// import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import fetch from 'node-fetch';
-import App from './App';
+// import App from './App';
 import './scss/index.scss';
-
+import SongList from './components/SongList';
 
 const cache = new InMemoryCache();
 const httpLink = new HttpLink({
@@ -23,12 +23,12 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(<ApolloProvider client={client}>
-  <BrowserRouter>
+  {/* <BrowserRouter>
     <Switch>
       <Route path='/' exact component={App} />
       <Redirect to='/' />
     </Switch>
-  </BrowserRouter>
-
+  </BrowserRouter> */}
+  <SongList />
 </ApolloProvider>,
 document.getElementById('root'));
